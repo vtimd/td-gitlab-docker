@@ -6,6 +6,7 @@ ARG CLOUD_SDK_VERSION=240.0.0
 ENV CLOUD_SDK_VERSION=$CLOUD_SDK_VERSION
 ENV PATH "$PATH:/opt/google-cloud-sdk/bin/"
 COPY --from=static-docker-source /usr/local/bin/docker /usr/local/bin/docker
+COPY --from=lachlanevenson/k8s-kubectl:latest /usr/local/bin/kubectl /usr/local/bin/kubectl
 RUN apt-get -qqy update && apt-get install -qqy \
         curl \
         gcc \
